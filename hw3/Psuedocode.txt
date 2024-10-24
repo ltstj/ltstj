@@ -1,0 +1,80 @@
+Psuedocode
+
+Function readCSV(filename, students):
+    Open file filename
+    Skip header line
+    Initialize empty unordered_map students
+    For each line in file:
+        Split line by commas into fields
+        Create Student object student
+        Set student.username to fields[0]
+        Set student.programming to stoi(fields[1])
+        Set student.debugging to stoi(fields[2])
+        Set student.design to stoi(fields[3])
+        Set student.do_not_work_with to split fields[4] by ':'
+        Set student.want_to_work_with to split fields[5] by ':'
+        Add student to students with key student.username
+    Return students
+
+Struct Student:
+    Fields:
+        username (string)
+        programming (int)
+        debugging (int)
+        design (int)
+        do_not_work_with (vector<string>)
+        want_to_work_with (vector<string>)
+
+Function formTeams(students, teamSize, prioritizePreferences):
+    Initialize empty vector teams
+    Initialize empty set assigned
+    For each student in students:
+        If student.username in assigned:
+            Continue
+        Initialize new team with student.username
+        Add student.username to assigned
+        If prioritizePreferences is True:
+            For each preferred in student.want_to_work_with:
+                If team size is teamSize:
+                    Break
+                If preferred in students and preferred not in assigned:
+                    Add preferred to team
+                    Add preferred to assigned
+        For each s in students:
+            If team size is teamSize:
+                Break
+            If s.username not in assigned and s.username not in student.do_not_work_with:
+                Add s.username to team
+                Add s.username to assigned
+        Add team to teams
+    Return teams
+
+Function calculateTeamScores(students, teams):
+    For each team in teams:
+        Initialize programmingScore, debuggingScore, designScore to 0
+        For each username in team:
+            Add students[username].programming to programmingScore
+            Add students[username].debugging to debuggingScore
+            Add students[username].design to designScore
+        Print "Team", team number, "Scores: Programming =", programmingScore, "Debugging =", debuggingScore, "Design =", designScore
+
+Function printTeams(teams):
+    For each team in teams:
+        Print "Team", team number, ":"
+        For each username in team:
+            Print username
+
+Main:
+    Prompt user for CSV filename
+    students = readCSV(filename)
+    Prompt user for team size
+    Prompt user for preference priority
+    teams = formTeams(students, teamSize, prioritizePreferences)
+    Print "Formed Teams:"
+    printTeams(teams)
+    Print "Team Scores:"
+    calculateTeamScores(students, teams)
+
+    I used a struct because it makes it easy to store all the information 
+    about the student all into one object. The vector makes it easy to store all
+    the teams. The set is used to manage and check preferences.

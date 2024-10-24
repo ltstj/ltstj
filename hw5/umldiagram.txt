@@ -1,0 +1,85 @@
++-------------------+
+|     Organism      |
++-------------------+
+| - int x           |
+| - int y           |
+| - int timeStepsSurvived |
++-------------------+
+| + Organism(int x, int y) |
+| + int getX() const      |
+| + int getY() const      |
+| + virtual void move(Grid &grid) = 0 |
+| + virtual void breed(Grid &grid) = 0 |
+| + virtual void starve(Grid &grid) = 0 |
++-------------------+
+
+        ^
+        |
+        |
++-------------------+
+|       Ant         |
++-------------------+
+| - int stepsSinceLastMove |
++-------------------+
+| + Ant(int x, int y)      |
+| + void move(Grid &grid)  |
+| + void breed(Grid &grid) |
+| + void starve(Grid &grid)|
++-------------------+
+
+        ^
+        |
+        |
++-------------------+   +-------------------+   +-------------------+
+|    QueenAnt       |   |    WorkerAnt      |   |    MaleAnt        |
++-------------------+   +-------------------+   +-------------------+
+| - bool mated      |   |                   |   |                   |
+| - int timeSinceLastBreed |
++-------------------+   +-------------------+   +-------------------+
+| + QueenAnt(int x, int y)|
+| + void move(Grid &grid) |
+| + void breed(Grid &grid)|
+| + void starve(Grid &grid)|
++-------------------+
+
+        ^
+        |
+        |
++-------------------+
+|   NewQueenAnt     |
++-------------------+
+|                   |
++-------------------+
+| + NewQueenAnt(int x, int y) |
++-------------------+
+
+        ^
+        |
+        |
++-------------------+
+|    Doodlebug      |
++-------------------+
+| - int stepsSinceLastMeal |
+| - int directionIndex     |
++-------------------+
+| + Doodlebug(int x, int y)|
+| + void move(Grid &grid)  |
+| + void breed(Grid &grid) |
+| + void starve(Grid &grid)|
++-------------------+
+
++-------------------+
+|       Grid        |
++-------------------+
+| - std::vector<std::vector<Organism*>> grid |
++-------------------+
+| + void addOrganism(Organism* organism) |
+| + void removeOrganism(int x, int y)    |
+| + bool isValidPosition(int x, int y)   |
+| + bool isEmpty(int x, int y)           |
+| + bool isWall(int x, int y)            |
+| + Organism* getOrganism(int x, int y)  |
+| + void moveOrganism(int oldX, int oldY, int newX, int newY) |
+| + void printGrid()                     |
+| + std::string getState()               |
++-------------------+
