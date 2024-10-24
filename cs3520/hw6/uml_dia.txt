@@ -1,0 +1,27 @@
++----------------+       +----------------+       +----------------+       +----------------+
+|   Dealership   |       |    Vehicle     |       |   Customer     |       |    Order       |
++----------------+       +----------------+       +----------------+       +----------------+
+| - name         |       | - model        |       | - name         |       | - vehicle      |
+| - location     |       | - price        |       | - dob          |       | - customer     |
+| - inventory    |       +----------------+       | - id           |       | - deliveryOpt  |
++----------------+       | + getModel()   |       | - favVehicles  |       +----------------+
+| + addVehicle() |       | + getPrice()   |       +----------------+       | + getOrderDetails() |
+| + getInventory()|       +----------------+       | + addFavoriteVehicle() | +----------------+
++----------------+                               | + getFavoriteVehicles() |
+                                                 +----------------+
+       |                                              |
+       |                                              |
+       |                                              |
+       |                                              |
+       v                                              v
++----------------+       +----------------+       +----------------+       +----------------+
+|  DeliveryOption|       |   Account      |       |  FavoriteList  |       | ReservationSystem<T>|
++----------------+       +----------------+       +----------------+       +----------------+
+| - type         |       | - username     |       | - vehicles     |       | - items        |
+| - cost         |       | - password     |       +----------------+       +----------------+
++----------------+       | - customer     |       | + addVehicle() |       | + reserve()    |
+| + getType()    |       +----------------+       | + getVehicles()|       | + addItems()   |
+| + getCost()    |       | + login()      |       +----------------+       | + getReservationDuration() |
++----------------+       +----------------+       |                 |       | + removeReservation() |
+                                                 +----------------+       | + getNumberOfReservations() |
+                                                                           +----------------+

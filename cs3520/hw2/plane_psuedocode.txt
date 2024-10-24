@@ -1,0 +1,55 @@
+Tejadatta Kalapatapu
+CS 3520
+
+General Psuedocode:
+
+Step 1: Create the seating arrangement
+    - make empty 2D array
+    - set them all to be empty at firt and then load any previous manifest (if needed)
+
+Step 2: Main menus
+    - Create 2 menus, one for passenger and for employees
+    - ask the user if they are passenger or employee
+    - depending on their answer, menu should change
+
+Step 3: Passengers menu
+    - Should contain the 6 options that were mentioned:
+        - Display seating map with seats filled or available
+        - Choosing seats (automatic and manual)
+        - Change/Cancel seat
+        - printing boarding pass
+        - quit
+
+Step 4: Employee menu
+    - Display seating map with seats filled or available
+    - print passenger manifest
+    - load previous seat assignment and passenger manifest
+    - save current seat assignment and passenger manifest
+    - re-assign/cancel seats
+    - quit
+
+Psuedocode for Functions:
+    Seat Selector (automatic):
+        - using random function, generate a random number and assign it to the passenger for their seat
+    
+    Seat Selector (manual):
+        - Display the current seating chart and let the user pick what seat they want
+    
+    Seat Change/Cancel:
+        - Make the user give the seat info and if it exists, then cancel or change it
+    
+    Print Boarding Pass:
+        - Asks the user to give seat information and if it exists, prints a boarding pass
+        - else prints invalid seat 
+    
+    Print Manifest:
+        - print every seat occupied with the Passenger name (could be done by name, what class they are in, or seat #)
+    
+    Loading Previous Manifest:
+        - read file and update it to the empty seating chart
+
+    Save Current Manifest:
+        - Saves the seating chart as a file
+    
+    Login (for employees):
+        - Ask the user for their username and password and if it matches, give them access to the menu
